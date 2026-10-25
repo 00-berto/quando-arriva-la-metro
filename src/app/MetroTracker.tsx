@@ -28,7 +28,9 @@ const displayRowClassName =
 function formatMinutesRemaining(direction: DirectionSchedule | undefined) {
   return (
     direction?.minutesRemaining
-      .map((minutes) => (minutes === 0 ? ">>" : `${minutes}'`))
+      .map((minutes) =>
+        minutes === 0 ? ">>" : minutes > 30 ? "--" : `${minutes}'`,
+      )
       .join(", ") || "--"
   );
 }
@@ -81,7 +83,11 @@ export default function MetroTracker() {
               tracker?.stesicoro.nextTimes.join(", ") || "non disponibili"
             }`}
           >
-            {formatMinutesRemaining(tracker?.stesicoro)}
+            {formatMinutesRemaining(tracker?.stesicoro) === "--, --"
+              ? "Chiusa"
+              : formatMinutesRemaining(tracker?.stesicoro).endsWith("', --")
+                ? formatMinutesRemaining(tracker?.stesicoro).replace(", --", "")
+                : formatMinutesRemaining(tracker?.stesicoro)}
           </span>
         </div>
 
@@ -93,7 +99,11 @@ export default function MetroTracker() {
               tracker?.montePo.nextTimes.join(", ") || "non disponibili"
             }`}
           >
-            {formatMinutesRemaining(tracker?.montePo)}
+            {formatMinutesRemaining(tracker?.montePo) === "--, --"
+              ? "Chiusa"
+              : formatMinutesRemaining(tracker?.montePo).endsWith("--")
+                ? formatMinutesRemaining(tracker?.montePo).replace(", --", "")
+                : formatMinutesRemaining(tracker?.montePo)}
           </span>
         </div>
 
