@@ -22,12 +22,12 @@ const doto = localFont({
 
 const displayRowClassName =
   doto.className +
-  " flex items-center justify-between gap-3 bg-[#303030] px-0 py-0 md:text-3xl text-2xl leading-[120%] whitespace-nowrap text-[#ff8400] [text-shadow:_0px_0px_8px_#ff8400]";
+  " flex items-center justify-between gap-3 bg-[#303030] px-0 py-0 md:text-3xl text-2xl leading-[120%] tracking-[-0.1rem] whitespace-nowrap text-[#ff8400] [text-shadow:_0px_0px_4px_#ff8400] md:[text-shadow:_0px_0px_8px_#ff8400]";
 
 function formatMinutesRemaining(direction: DirectionSchedule | undefined) {
   return (
     direction?.minutesRemaining
-      .map((minutes) => (minutes === 0 ? "ARRIVO" : `${minutes}'`))
+      .map((minutes) => (minutes === 0 ? ">>" : `${minutes}'`))
       .join(", ") || "--"
   );
 }
@@ -65,7 +65,7 @@ export default function MetroTracker() {
         setError(
           requestError instanceof Error
             ? requestError.message
-            : "Unable to load metro timetable",
+            : "Impossibile caricare dati. Riprova più tardi.",
         );
       }
     };
@@ -80,9 +80,11 @@ export default function MetroTracker() {
 
   return (
     <section
-      className="font-doto flex h-fit w-full flex-col gap-4 rounded-xl bg-[#202020] p-6"
+      className="font-doto relative flex h-fit w-full flex-col gap-4 rounded-xl bg-[#202020] p-6"
       aria-label="Orario metro in tempo reale"
     >
+      {/* <div className="absolute h-300 w-16 bg-[#202020] top-0 left-4 -translate-y-2/2" />
+      <div className="absolute h-300 w-16 bg-[#202020] right-4 top-0 -translate-y-2/2" /> */}
       <div className="w-full flex flex-col gap-4 p-2 rounded-xs bg-[#2a2a2a]">
         <div className={displayRowClassName}>
           <span className="text-ellipsis">{tracker?.currentDay ?? "--"}</span>

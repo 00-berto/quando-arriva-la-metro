@@ -3,7 +3,7 @@ import { Titillium_Web } from "next/font/google";
 import "./globals.css";
 
 const barlow = Titillium_Web({
-  weight: ["600"],
+  weight: ["700"],
   subsets: ["latin"],
   variable: "--font-sans",
 });
