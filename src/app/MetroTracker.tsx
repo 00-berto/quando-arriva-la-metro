@@ -22,7 +22,7 @@ const doto = localFont({
 
 const displayRowClassName =
   doto.className +
-  " flex items-center justify-between gap-3 bg-[#303030] px-0 py-0 md:text-3xl text-2xl leading-[120%] tracking-[-0.1rem] whitespace-nowrap text-[#ff8400] [text-shadow:_0px_0px_4px_#ff8400] md:[text-shadow:_0px_0px_8px_#ff8400]";
+  " flex items-center justify-between gap-3 bg-[#303030] selection:text-white selection:bg-[#ff8400] px-0 py-0 md:text-3xl text-2xl leading-[120%] tracking-[-0.1rem] whitespace-nowrap text-[#ff8400] [text-shadow:_0px_0px_4px_#ff8400] md:[text-shadow:_0px_0px_8px_#ff8400]";
 
 function formatMinutesRemaining(direction: DirectionSchedule | undefined) {
   return (
