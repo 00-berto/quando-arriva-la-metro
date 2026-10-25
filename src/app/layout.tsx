@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { Barlow_Semi_Condensed, Titillium_Web } from "next/font/google";
+import { Titillium_Web } from "next/font/google";
 import "./globals.css";
 
 const barlow = Titillium_Web({
-  //weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   weight: ["600"],
   subsets: ["latin"],
   variable: "--font-sans",
