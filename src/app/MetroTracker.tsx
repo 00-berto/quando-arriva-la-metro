@@ -22,7 +22,7 @@ const doto = localFont({
 
 const displayRowClassName =
   doto.className +
-  " flex items-center justify-between gap-3 bg-[#303030] px-1 py-2 md:text-3xl text-2xl leading-[120%] whitespace-nowrap text-[#ff9900] [text-shadow:_0px_0px_5px_#ff9900]";
+  " flex items-center justify-between gap-3 bg-[#303030] px-0 py-0 md:text-3xl text-2xl leading-[120%] whitespace-nowrap text-[#ff8400] [text-shadow:_0px_0px_8px_#ff8400]";
 
 function formatMinutesRemaining(direction: DirectionSchedule | undefined) {
   return (
@@ -80,45 +80,47 @@ export default function MetroTracker() {
 
   return (
     <section
-      className="font-doto flex h-fit w-full flex-col gap-2 rounded-lg bg-[#202020] p-[clamp(16px,3vw,26px)]"
+      className="font-doto flex h-fit w-full flex-col gap-4 rounded-xl bg-[#202020] p-6"
       aria-label="Orario metro in tempo reale"
     >
-      <div className={displayRowClassName}>
-        <span className="text-ellipsis">{tracker?.currentDay ?? "--"}</span>
-        <time className="flex-none text-right">
-          {tracker?.currentTime ?? "--:--"}
-        </time>
-      </div>
+      <div className="w-full flex flex-col gap-4 p-2 rounded-xs bg-[#2a2a2a]">
+        <div className={displayRowClassName}>
+          <span className="text-ellipsis">{tracker?.currentDay ?? "--"}</span>
+          <time className="flex-none text-right">
+            {tracker?.currentTime ?? "--:--"}
+          </time>
+        </div>
 
-      <div className={displayRowClassName}>
-        <span className="text-ellipsis">Stesicoro</span>
-        <span
-          className="flex-none text-right tracking-normal"
-          aria-label={`Prossime partenze da Stesicoro: ${
-            tracker?.stesicoro.nextTimes.join(", ") || "non disponibili"
-          }`}
-        >
-          {formatMinutesRemaining(tracker?.stesicoro)}
-        </span>
-      </div>
+        <div className={displayRowClassName}>
+          <span className="text-ellipsis">Stesicoro</span>
+          <span
+            className="flex-none text-right tracking-normal"
+            aria-label={`Prossime partenze da Stesicoro: ${
+              tracker?.stesicoro.nextTimes.join(", ") || "non disponibili"
+            }`}
+          >
+            {formatMinutesRemaining(tracker?.stesicoro)}
+          </span>
+        </div>
 
-      <div className={displayRowClassName}>
-        <span className="text-ellipsis">Monte Po&apos;</span>
-        <span
-          className="flex-none text-right tracking-normal"
-          aria-label={`Prossimi arrivi a Monte Po: ${
-            tracker?.montePo.nextTimes.join(", ") || "non disponibili"
-          }`}
-        >
-          {formatMinutesRemaining(tracker?.montePo)}
-        </span>
-      </div>
+        <div className={displayRowClassName}>
+          <span className="text-ellipsis">Monte Po</span>
+          <span
+            className="flex-none text-right tracking-normal"
+            aria-label={`Prossimi arrivi a Monte Po: ${
+              tracker?.montePo.nextTimes.join(", ") || "non disponibili"
+            }`}
+          >
+            {formatMinutesRemaining(tracker?.montePo)}
+          </span>
+        </div>
 
-      {error && (
-        <p className="font-sans text-sm text-red-300" role="alert">
-          {error}
-        </p>
-      )}
+        {error && (
+          <p className="font-sans text-sm text-red-300" role="alert">
+            {error}
+          </p>
+        )}
+      </div>
     </section>
   );
 }
