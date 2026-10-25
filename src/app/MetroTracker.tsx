@@ -12,6 +12,7 @@ interface DirectionSchedule {
 interface TrackerResponse {
   currentDay: string;
   currentTime: string;
+  dateString: string;
   stesicoro: DirectionSchedule;
   montePo: DirectionSchedule;
 }
@@ -66,7 +67,7 @@ export default function MetroTracker() {
       <div className="absolute h-300 w-16 bg-[#202020] right-4 top-0 -translate-y-2/2" /> */}
       <div className="w-full flex flex-col gap-4 p-2 rounded-xs bg-[#2a2a2a]">
         <div className={displayRowClassName}>
-          <span className="text-ellipsis">{tracker?.currentDay ?? "--"}</span>
+          <span className="text-ellipsis">{tracker?.dateString ?? "--"}</span>
           <time className="flex-none text-right">
             {tracker?.currentTime ?? "--:--"}
           </time>

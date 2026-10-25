@@ -141,7 +141,7 @@ export function getTrackerData(now = new Date()) {
   const localNow = getZonedDateParts(now);
   const currentDay = new Intl.DateTimeFormat("it-IT", {
     timeZone: TIME_ZONE,
-    weekday: "long",
+    weekday: "short",
   })
     .format(now)
     .toLocaleUpperCase("it-IT");
@@ -151,10 +151,19 @@ export function getTrackerData(now = new Date()) {
     minute: "2-digit",
     hourCycle: "h23",
   }).format(now);
+  const dateString = new Intl.DateTimeFormat("it-IT", {
+    timeZone: TIME_ZONE,
+    weekday: "short",
+    month: "short",
+    day: "numeric",
+  })
+    .format(now)
+    .toLocaleUpperCase("it-IT");
 
   return {
     currentDay,
     currentTime,
+    dateString,
     stesicoro: getNextTwo("stesicoro_departures", now, localNow),
     montePo: getNextTwo("monte_po_arrivals", now, localNow),
   };
