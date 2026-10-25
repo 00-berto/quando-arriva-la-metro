@@ -40,4 +40,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-/metro-schedule.json
+metro-schedule.json
+ORARIO-METRO-ANALITICO-MONTEPO-FONTANA-24.pdf
