@@ -1,4 +1,4 @@
-<img src="/public/logo.svg" style="width: 128px; height: 128px"><h1 style="font-size: 48px">Quando arriva la metro di Catania?</h1>
+<img src="/public/favicon.svg" style="width: 128px; height: 128px"><h1 style="font-size: 48px">Quando arriva la metro di Catania?</h1>
 
 Questo sito ti permette di visualizzare i tempi stimati di arrivo del prossimo treno della Metropolitana di Catania, utlilizzando [dati pubblicati da Ferrovia Circumetnea](https://circumetnea.it/download/orario-metro/). Non prevede ritardi, quindi non è accurato il 100% delle volte.
 
