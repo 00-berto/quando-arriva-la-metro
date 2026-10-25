@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import localFont from "next/font/local";
-import Image from "next/image";
+import { getTrackerData } from "@/lib/metro-tracker";
 
 interface DirectionSchedule {
   nextTimes: string[];
@@ -37,31 +37,11 @@ export default function MetroTracker() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const controller = new AbortController();
-
-    const updateTracker = async () => {
+    const updateTracker = () => {
       try {
-        const response = await fetch("/api/quando", {
-          cache: "no-store",
-          signal: controller.signal,
-        });
-        if (!response.ok) {
-          const resJson = await response.json();
-          throw new Error(
-            `${resJson.error ?? "Impossibile caricare dati. Riprova più tardi."} (${response.status})`,
-          );
-        }
-
-        const data: TrackerResponse = await response.json();
-        setTracker(data);
+        setTracker(getTrackerData());
         setError(null);
       } catch (requestError) {
-        if (
-          requestError instanceof DOMException &&
-          requestError.name === "AbortError"
-        ) {
-          return;
-        }
         setError(
           requestError instanceof Error
             ? requestError.message
@@ -70,10 +50,9 @@ export default function MetroTracker() {
       }
     };
 
-    void updateTracker();
-    const interval = window.setInterval(() => void updateTracker(), 15_000);
+    updateTracker();
+    const interval = window.setInterval(updateTracker, 1_000);
     return () => {
-      controller.abort();
       window.clearInterval(interval);
     };
   }, []);
