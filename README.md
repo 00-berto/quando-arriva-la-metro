@@ -6,7 +6,7 @@ La home page espone i metadati SEO, i dati strutturati `WebSite` e gli endpoint 
 
 ## Setup
 
-Scarica l'orario dal [sito di Ferrovia Circumetnea](https://circumetnea.it/download/orario-metro/), piazzalo nella root del progetto, e fai partire lo script extract_schedule.py (richiede pypdf, ricorda di installarlo). Avrai creato metro-schedule.json, che dovrai tenere nella root del progetto. Una volta fatto ciò, basta semplicemente iniziare l'app di Next.js con npm run dev!
+Scarica l'orario dal [sito di Ferrovia Circumetnea](https://circumetnea.it/download/orario-metro/), piazzalo nella root del progetto, ed esegui `python extract_schedule.py <orario> -o metro-schedule.json` (ricorda di avere tutte le dipendenze installate). Avrai creato un file con tutti gli orari, che dovrai tenere nella root del progetto. Una volta fatto ciò, basta semplicemente iniziare l'app di Next.js con npm run dev!
 
 ## Contribuire
 
